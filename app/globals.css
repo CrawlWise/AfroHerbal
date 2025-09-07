@@ -1,0 +1,225 @@
+/* ---- Tailwind v4 core + plugins ---- */
+@import "tailwindcss";
+@plugin "tailwindcss-animate";
+
+/* ---- Fonts ---- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+/* ----------------------------------------------------------------------------
+   1) Design tokens (your original variables)
+----------------------------------------------------------------------------- */
+@layer base {
+  :root {
+    /* Afro Herbal Brand Colors - Earth & Nature Tones */
+    --background: 50 20% 98%;
+    --foreground: 120 25% 15%;
+
+    --card: 50 30% 97%;
+    --card-foreground: 120 25% 15%;
+
+    --popover: 50 30% 97%;
+    --popover-foreground: 120 25% 15%;
+
+    /* Primary: Deep Forest Green */
+    --primary: 140 45% 25%;
+    --primary-foreground: 50 20% 98%;
+
+    /* Secondary: Warm Terra Cotta */
+    --secondary: 20 45% 85%;
+    --secondary-foreground: 120 25% 15%;
+
+    --muted: 45 25% 92%;
+    --muted-foreground: 120 15% 45%;
+
+    /* Accent: Golden Amber */
+    --accent: 45 85% 65%;
+    --accent-foreground: 120 25% 15%;
+
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 50 20% 98%;
+
+    --border: 45 20% 88%;
+    --input: 45 20% 88%;
+    --ring: 140 45% 25%;
+
+    /* African Heritage Colors */
+    --african-gold: 40 95% 55%;
+    --earth-brown: 25 35% 35%;
+    --sage-green: 120 25% 60%;
+    --sunset-orange: 25 85% 65%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--sage-green)));
+    --gradient-earth: linear-gradient(45deg, hsl(var(--earth-brown)), hsl(var(--african-gold)));
+    --gradient-subtle: linear-gradient(180deg, hsl(var(--background)), hsl(var(--muted)));
+
+    /* Shadows */
+    --shadow-soft: 0 4px 20px hsl(var(--primary) / 0.1);
+    --shadow-medium: 0 8px 30px hsl(var(--primary) / 0.15);
+    --shadow-strong: 0 12px 40px hsl(var(--primary) / 0.2);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 0.75rem;
+
+    /* Sidebar tokens */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+/* ----------------------------------------------------------------------------
+   2) Map tokens to Tailwind v4 color system
+   (this makes classes like bg-background, text-foreground, border-border work)
+----------------------------------------------------------------------------- */
+@theme {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+}
+
+/* ----------------------------------------------------------------------------
+   3) Base resets & typography
+----------------------------------------------------------------------------- */
+@layer base {
+  /* Apply your border color globally via Tailwind token */
+  * {
+    @apply border-border;
+  }
+
+  /* Use your tokens for page colors + fonts */
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans",
+      "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Playfair Display", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  }
+}
+
+/* ----------------------------------------------------------------------------
+   4) Component & utility helpers (your custom classes)
+----------------------------------------------------------------------------- */
+@layer components {
+  .gradient-hero { background: var(--gradient-hero); }
+  .gradient-earth { background: var(--gradient-earth); }
+  .gradient-subtle { background: var(--gradient-subtle); }
+
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+  .shadow-medium { box-shadow: var(--shadow-medium); }
+  .shadow-strong { box-shadow: var(--shadow-strong); }
+
+  .transition-smooth { transition: var(--transition-smooth); }
+  .transition-bounce { transition: var(--transition-bounce); }
+}
+
+/* Optional: custom utilities so you can still use `font-inter` / `font-playfair` in JSX */
+@layer utilities {
+  .font-inter { font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; }
+  .font-playfair { font-family: "Playfair Display", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif; }
+}
+
+/* ----------------------------------------------------------------------------
+   5) Legacy Vite styles (kept 1:1; safe to remove later)
+----------------------------------------------------------------------------- */
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover { filter: drop-shadow(0 0 2em #646cffaa); }
+.logo.react:hover { filter: drop-shadow(0 0 2em #61dafbaa); }
+
+@keyframes logo-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo { animation: logo-spin infinite 20s linear; }
+}
+
+.card { padding: 2em; }
+.read-the-docs { color: #888; }
